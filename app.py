@@ -25,8 +25,7 @@ def index():
 def generate_abstract():
     if request.method == 'POST':
         title = request.form['title']
-        abst = generate([title], \
-                        './model/seq2seq-Full-atteention-300epochs.mdl')[0]
+        abst = generate([title], 'model/s2smodel.npz')[0]
         return render_template('index.html', title=title, abst=abst)
     return render_template('index.html')
 

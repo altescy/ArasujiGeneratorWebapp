@@ -26,7 +26,7 @@ def generate(titles, modelfile, max_len=50):
     n_out = len(c_wd2id.wd2id)
     model = Seq2SeqAttention(n_in, 300, n_out)
 
-    serializers.load_npz('model/s2smodel.npz', model)
+    serializers.load_npz(modelfile, model)
 
     title_id = t_wd2id(titles)
     for i in range(len(title_id)):
