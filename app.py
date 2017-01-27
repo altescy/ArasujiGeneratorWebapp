@@ -14,7 +14,6 @@ from chainer import Variable
 
 from utilities.word2id import Word2ID
 
-modelfile = './model/seq2seq-Full-atteention-300epochs.mdl'
 
 app = Flask(__name__)
 
@@ -27,7 +26,8 @@ def index():
 def generate_abstract():
     if request.method == 'POST':
         title = request.form['title']
-        abst = generate([title], modelfile)[0]
+        abst = generate([title], \
+                        './model/seq2seq-Full-atteention-300epochs.mdl')[0]
         return render_template('index.html', title=title, abst=abst)
     return render_template('index.html')
 
