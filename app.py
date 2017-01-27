@@ -111,24 +111,6 @@ class Seq2SeqAttention(Chain):
         self.lstm_c.reset_state()
         self.lstm_o.reset_state()
 
-
-app = Flask(__name__)
-
-
-@app.route('/')
-def index():
-    return render_template('index.html')
-
-@app.route('/result', methods=['POST'])
-def generate_abstract():
-    if request.method == 'POST':
-        title = request.form['title']
-        abst = generate([title], \
-                        './model/seq2seq-Full-atteention-300epochs.mdl')[0]
-        return render_template('index.html', title=title, abst=abst)
-    return render_template('index.html')
-
-
 def generate(titles, modelfile, max_len=50):
     with open('./data/KADOKAWA-caption-id-dataset.pkl', 'rb') as f:
         dataset = pickle.load(f)
@@ -150,6 +132,24 @@ def generate(titles, modelfile, max_len=50):
     prediction = c_wd2id.translate(model.predict(title_id, max_iter=max_len))
 
     return [p.replace(' ', '').replace('<eos>', '') for p in prediction]
+
+
+app = Flask(__name__)
+
+
+@app.route('/')
+def index():
+    return render_template('index.html')
+
+@app.route('/result', methods=['POST'])
+def generate_abstract():
+    if request.method == 'POST':
+        title = request.form['title']
+        abst = generate([title], \
+                        './model/seq2seq-Full-atteention-300epochs.mdl')[0]
+        return render_template('index.html', title=title, abst=abst)
+    return render_template('index.html')
+
 
 
 
