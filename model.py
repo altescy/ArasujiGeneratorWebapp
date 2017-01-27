@@ -18,9 +18,8 @@ class Seq2SeqAttention(Chain):
             lstm_i = L.LSTM(n_mid, n_mid),  # Encoder用LSTM
             lstm_c = L.LSTM(n_mid, n_mid),  # Encoder -> Decoder 変換素子
             lstm_o = L.LSTM(n_mid, n_mid),  # Decoder用LSTM
-            #w_c    = L.Linear(n_mid, n_mid),
-            #w_h    = L.Linear(n_mid, n_mid),
-            w_ifo  = L.Linear(n_mid, 3*n_mid), # AttentionのInput Gate,Forget Gate,Output Gate
+            w_c    = L.Linear(n_mid, n_mid),
+            w_h    = L.Linear(n_mid, n_mid),
             out    = L.Linear(n_mid, n_out)
         )
         self.ignore_label = ignore_label
@@ -67,11 +66,7 @@ class Seq2SeqAttention(Chain):
             c.append(np.dot(H_i.T, a_i))
         c = Variable(np.array(c).astype(np.float32))
 
-        ifo = F.sigmoid(self.w_ifo(h))
-        i = F.dropout(ifo[:,:self.n_mid], train=train)
-        f = ifo[:,self.n_mid:2*self.n_mid]
-        o = ifo[:,2*self.n_mid:]
-        q = F.tanh(i*h + f*c) * o
+        q = F.tanh(self.w_h(h) + self.w_c(c))
         return self.out(q)
 
     def decode_train(self, p, H, Y):
