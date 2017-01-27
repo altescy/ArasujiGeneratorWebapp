@@ -11,7 +11,7 @@ import numpy as np
 
 from model import Seq2SeqAttention
 from utilities.word2id import Word2ID
-
+from chainer import serializers
 
 def generate(titles, modelfile, max_len=50):
     with open('./data/KADOKAWA-caption-id-dataset.pkl', 'rb') as f:
@@ -22,10 +22,12 @@ def generate(titles, modelfile, max_len=50):
     t_wd2id.deserialize(dataset['title'])
     c_wd2id.deserialize(dataset['caption'])
 
-    with open(modelfile, 'rb') as f:
-        modeldata = pickle.load(f)
+    n_in = len(t_wd2id.wd2id)
+    n_out = len(c_wd2id.wd2id)
+    model = Seq2SeqAttention(n_in, 300, n_out)
 
-    model = modeldata['model']
+    serializers.load_npz('model/s2smodel.npz', model)
+
     title_id = t_wd2id(titles)
     for i in range(len(title_id)):
         title_id[i].append(-1)
@@ -34,7 +36,6 @@ def generate(titles, modelfile, max_len=50):
     prediction = c_wd2id.translate(model.predict(title_id, max_iter=max_len))
 
     return [p.replace(' ', '').replace('<eos>', '') for p in prediction]
-
 
 
 if __name__ == '__main__':
