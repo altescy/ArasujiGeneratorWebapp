@@ -1,2 +1,2 @@
 # -*- coding: utf-8 -*-
-from app.app import Seq2SeqAttention
+from app.app.model import Seq2SeqAttention
