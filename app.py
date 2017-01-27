@@ -13,7 +13,7 @@ from chainer import Chain, links as L, functions as F
 from chainer import Variable
 
 import sys
-sys.path.append('./')
+sys.path.append('/app/')
 from model import Seq2SeqAttention
 from utilities.word2id import Word2ID
 
