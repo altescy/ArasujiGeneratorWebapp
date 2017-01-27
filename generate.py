@@ -9,12 +9,12 @@ Created on Tue Jan 24 22:07:53 2017
 import pickle
 import numpy as np
 
-from app.model import Seq2SeqAttention
-from app.utilities.word2id import Word2ID
+from model import Seq2SeqAttention
+from utilities.word2id import Word2ID
 
 
 def generate(titles, modelfile, max_len=50):
-    with open('data/KADOKAWA-caption-id-dataset.pkl', 'rb') as f:
+    with open('./data/KADOKAWA-caption-id-dataset.pkl', 'rb') as f:
         dataset = pickle.load(f)
 
     t_wd2id = Word2ID()

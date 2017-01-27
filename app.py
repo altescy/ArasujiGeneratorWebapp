@@ -7,10 +7,10 @@ Created on Tue Jan 24 22:26:35 2017
 
 
 from flask import Flask, render_template, request
-from app.generate import generate
-from app.model import Seq2SeqAttention
+from generate import generate
+from model import Seq2SeqAttention
 
-modelfile = 'model/seq2seq-Full-atteention-300epochs.mdl'
+modelfile = './model/seq2seq-Full-atteention-300epochs.mdl'
 
 app = Flask(__name__)
 
