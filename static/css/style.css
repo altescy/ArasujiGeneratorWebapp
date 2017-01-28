@@ -1,3 +1,65 @@
+body {
+    font-family: Helvetica , "游ゴシック" , "Yu Gothic" , sans-serif;
+    background: hsla(0, 0%, 95%, 1);
+}
+.wrapper {
+    position: absolute;
+    top: -20%;
+    right: 0px;
+    bottom: 0px;
+    left: 0px;
+    margin: auto;
+
+    width: 90%;
+    height: 200px;
+}
+#logo a {
+    text-decoration: none;
+    white-space: nowrap;
+}
+#logo h1 {
+    display: block;
+    color: black;
+    text-shadow: 1px 1px 1px #222;
+}
+#title {
+    width: 60%;
+    align-items: center;
+}
 #abst {
-    font-size: 30px;
+    margin-top: 20px;
+}
+#intitle {
+    font-size: 1.1em;
+}
+#input {
+    box-shadow: 10px 10px;
+}
+.bdline {
+    width: 500px;
+    border-bottom: 1px dashed blue;
+    margin-left: auto;
+    margin-right: auto;
+    height: 5px;
+}
+footer {
+    position: fixed;
+    bottom: 0;
+    width: 100%;
+    height: 20px;
+    font-size: 10px;
+}
+@media (max-width: 767px) {
+    #logo h1{
+        font-size: 26px;
+    }
+    #title {
+        width: 100%;
+    }
+    .btn {
+        width: 100%;
+    }
+    .bdline {
+        width: 80%;
+    }
 }
