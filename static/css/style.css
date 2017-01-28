@@ -32,12 +32,12 @@ body {
 #intitle {
     font-size: 1.1em;
 }
-#input {
-    box-shadow: 10px 10px;
+#input input {
+    box-shadow: 10px 10px 10px 10px rgba(0,0,0,0.4);
 }
 .bdline {
     width: 500px;
-    border-bottom: 1px dashed blue;
+    border-bottom: 1px dashed red;
     margin-left: auto;
     margin-right: auto;
     height: 5px;
