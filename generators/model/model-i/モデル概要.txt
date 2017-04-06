@@ -1,0 +1,7 @@
+Seq2Seq attention
+
+[ 構成 ]
+ 入力 X → Encoder → 変換素子 → dropout → Decoder(Attention) → 出力
+
+[ Note ]
+ Decoder内部では一つ前の出力を読み込んだLSTMの出力にdropout
