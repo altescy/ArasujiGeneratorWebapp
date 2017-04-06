@@ -1,4 +1,4 @@
 *.pyc
 *.pyo
-./generators/model/*
-./generators/data/*
+/generators/model/
+/generators/data/
