@@ -2,7 +2,6 @@
 This is an application that creates a summary of a book based on the book title.<br>
 
 - Application URL:
-
 https://arasuji-generator.herokuapp.com/
 
 
