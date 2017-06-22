@@ -1,5 +1,6 @@
 # ArasujiGenerator
 This is an application that creates a summary of a book based on the book title.<br>
+Generation method is using a LSTM encoder-decoder model.
 
 - Application URL:
 https://arasuji-generator.herokuapp.com/
